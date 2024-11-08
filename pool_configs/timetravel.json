@@ -1,0 +1,78 @@
+{
+    "enabled": true,
+    "coin": "timetravel.json",
+
+    "address": "MWDk2CipZiu81RnZmqnnS1MuWKjHFegGKu",
+
+    "rewardRecipients": {
+        "MWDk2CipZiu81RnZmqnnS1MuWKjHFegGKu": 1.0
+    },
+
+    "paymentProcessing": {
+        "minConf": 10,
+        "enabled": true,
+        "paymentMode": "prop",
+        "_comment_paymentMode": "prop, pplnt",
+        "paymentInterval": 120,
+        "minimumPayment": 0.1,
+        "maxBlocksPerPayment": 3,
+        "daemon": {
+            "host": "192.168.0.14",
+            "port": 9998,
+            "user": "mtchannel",
+            "password": "2502MtChannel2502"
+        }
+    },
+
+    "tlsOptions": {
+        "enabled": false,
+        "serverKey": "",
+        "serverCert": "",
+        "ca": ""
+    },
+
+    "ports": {
+        "3032": {
+            "diff": 0.5,
+            "tls": false,
+            "varDiff": {
+                "minDiff": 0.5,
+                "maxDiff": 500,
+                "targetTime": 15,
+                "retargetTime": 60,
+                "variancePercent": 20
+            }
+        }
+    },
+
+    "poolId": "main",
+    "_comment_poolId": "use it for region identification: eu, us, asia or keep default if you have one stratum instance for one coin",
+
+    "daemons": [
+        {
+            "host": "192.168.0.14",
+            "port": 9998,
+            "user": "mtchannel",
+            "password": "2502MtChannel2502"
+        }
+    ],
+
+    "p2p": {
+        "enabled": false,
+        "host": "192.168.0.14",
+        "port": 9999,
+        "disableTransactions": true
+    },
+
+    "mposMode": {
+        "enabled": false,
+        "host": "192.168.0.14",
+        "port": 3306,
+        "user": "",
+        "password": "",
+        "database": "",
+        "checkPassword": true,
+        "autoCreateWorker": false
+    }
+
+}

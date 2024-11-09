@@ -1,5 +1,6 @@
 {
     "name": "Machine",
     "symbol": "MAC",
-    "algorithm": "timetravel"
+    "algorithm": "timetravel",
+    "peerMagic": "fbc0b6db"
 }

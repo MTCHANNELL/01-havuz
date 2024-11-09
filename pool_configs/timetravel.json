@@ -2,10 +2,10 @@
     "enabled": true,
     "coin": "timetravel.json",
 
-    "address": "MWDk2CipZiu81RnZmqnnS1MuWKjHFegGKu",
+    "address": "9GsDoRN3kNRZC9gJDAFuMAKbK6phx2ZVqN",
 
     "rewardRecipients": {
-        "MWDk2CipZiu81RnZmqnnS1MuWKjHFegGKu": 1.0
+        "9GsDoRN3kNRZC9gJDAFuMAKbK6phx2ZVqN": 1.0
     },
 
     "paymentProcessing": {

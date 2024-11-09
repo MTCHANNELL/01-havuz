@@ -102,28 +102,29 @@ function SetupForPool(logger, poolOptions, setupFinished) {
     var disablePeymentProcessing = false;
 
     function validateAddress(callback) {
-        var cmd = "validateaddress"
-        if (poolOptions.BTCover17)
-            cmd = "getaddressinfo"
-        if (poolOptions.address != false) {
-            daemon.cmd(cmd, [poolOptions.address], function (result) {
-                if (result.error) {
-                    logger.error(logSystem, logComponent, 'Error with payment processing daemon ' + JSON.stringify(result.error));
-                    callback(true);
-                }
-                else if (!result.response || !result.response.ismine) {
-                    logger.error(logSystem, logComponent,
-                        'Daemon does not own pool address - payment processing can not be done with this daemon, '
-                        + JSON.stringify(result.response));
-                    callback(true);
-                }
-                else {
-                    callback()
-                }
-            }, true);
-        }
-        else callback();
+    var cmd = "validateaddress";
+    if (poolOptions.BTCover17) cmd = "getaddressinfo";
+    
+    if (poolOptions.address) {
+        daemon.cmd(cmd, [poolOptions.address], function (result) {
+            if (result.error) {
+                logger.error(logSystem, logComponent, 'Error with payment processing daemon ' + JSON.stringify(result.error));
+                callback(true);
+            } else if (!result.response || !result.response.isvalid) {
+                logger.error(logSystem, logComponent,
+                    'Invalid pool address - payment processing cannot proceed. Please check poolOptions.address: '
+                    + JSON.stringify(result.response));
+                callback(true);
+            } else {
+                // ismine kontrolü atlandı
+                callback();
+            }
+        }, true);
+    } else {
+        logger.error(logSystem, logComponent, 'Pool address is not defined in poolOptions.');
+        callback(true);
     }
+}
     function validateTAddress(callback) {
         daemon.cmd('validateaddress', [poolOptions.tAddress], function (result) {
             if (result.error) {
